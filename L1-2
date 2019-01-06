@@ -1,0 +1,41 @@
+Imagninary roots (WS 1.2)
+$y_t = 1.6y_{t-1}-0.9y_{t-2}$
+In [33]:
+a1 <- 1.6
+a2 <- -0.9
+
+d <- a1^2+4*a2
+d
+-1.04
+In [34]:
+0.5*(a1+as.complex(d)^0.5)
+0.5*(a1-as.complex(d)^0.5)
+0.8+0.509901951359278i
+0.8-0.509901951359278i
+In [35]:
+sqrt(0.8^2 + 0.509901951359278^2)
+sqrt(0.9)
+0.948683298050514
+0.948683298050514
+In [36]:
+r <- (-a2)^0.5
+r
+0.948683298050514
+In [37]:
+theta <- acos(a1/(2*(-a2)^0.5))
+theta
+0.567450475278837
+In [38]:
+vec <- 1:30
+res <- 1*(r)^vec*cos(theta*vec+0)
+
+p1 <- ggplot() + 
+    geom_line(aes(vec,res))
+
+vec1 <- 1:30
+res1 <- 1*(0.949)^vec*cos(1.89*vec+0)
+
+p2 <- ggplot() + 
+    geom_line(aes(vec1,res1))
+
+grid.arrange(p1,p2, nrow=1)
